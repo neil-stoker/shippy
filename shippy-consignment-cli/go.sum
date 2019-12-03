@@ -278,8 +278,13 @@ github.com/nats-io/nkeys v0.1.0/go.mod h1:xpnFELMwJABBLVhffcfd1MZx6VsNRFpEugbxzi
 github.com/nats-io/nuid v1.0.1 h1:5iA8DT8V7q8WK2EScv2padNa/rTESc1KdnPw4TC2paw=
 github.com/nats-io/nuid v1.0.1/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OSON2c=
 github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32/go.mod h1:9wM+0iRr9ahx58uYLpLIr5fm8diHn0JbqRycJi6w0Ms=
+github.com/neil-stoker/shippy v0.0.0-20191203140725-256007f6fc63 h1:JNhUjbdFTw0rggcHA/STNpQuF8EqaQswAxpqVIqOhy8=
 github.com/neil-stoker/shippy-service-consignment v0.0.0-20191203114631-99a8f96d423a h1:t6e9U+FdFE9qfF3W+mIx2Q8+N0jAjl1hZdvs/pAmL40=
 github.com/neil-stoker/shippy-service-consignment v0.0.0-20191203114631-99a8f96d423a/go.mod h1:dlyz8d4ZWdmV3LHp+eZVqbxGtBehYo0K4E/FFyECPv4=
+github.com/neil-stoker/shippy-service-consignment v0.0.0-20191203130321-d7f6bac5d5c9/go.mod h1:dlyz8d4ZWdmV3LHp+eZVqbxGtBehYo0K4E/FFyECPv4=
+github.com/neil-stoker/shippy-service-vessel v0.0.0-20191203135353-cdee05011361/go.mod h1:m87lOMKxUJWGe4jAGguT6yMciDnm24IA/xAgBGBUQY0=
+github.com/neil-stoker/shippy/shippy-service-consignment v0.0.0-20191203142733-cc44c5450e92 h1:+YyNNorBXs+NCcMw1pKBUC22bpQgmaVIRaI+7mj9Fxw=
+github.com/neil-stoker/shippy/shippy-service-consignment v0.0.0-20191203142733-cc44c5450e92/go.mod h1:1dauJZy12wAcm3Eun3c075oEIkZBvy/bPTBgpEF/aXU=
 github.com/nlopes/slack v0.6.0/go.mod h1:JzQ9m3PMAqcpeCam7UaHSuBuupz7CmpjehYMayT6YOk=
 github.com/nrdcg/auroradns v1.0.0/go.mod h1:6JPXKzIRzZzMqtTDgueIhTi6rFf1QvYE/HzqidhOhjw=
 github.com/nrdcg/goinwx v0.6.1/go.mod h1:XPiut7enlbEdntAqalBIqcYcTEVhpv/dKWgDCX2SwKQ=

@@ -9,7 +9,7 @@ import (
 
 	micro "github.com/micro/go-micro"
 
-	pb "github.com/neil-stoker/shippy-service-consignment/proto/consignment"
+	pb "github.com/neil-stoker/shippy/shippy-service-consignment/proto/consignment"
 )
 
 const (
