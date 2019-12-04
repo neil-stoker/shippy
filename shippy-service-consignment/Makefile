@@ -1,11 +1,6 @@
 
-PB = $(wildcard proto/consigment/*.proto)
-GO = $(PB:.proto=.pb.go)
-
-%.pb.go: %.proto
+build:
 	protoc -I. --go_out=plugins=micro:. proto/consignment/consignment.proto
-
-build: proto
 	docker build -t shippy-service-consignment .
 
 run:
