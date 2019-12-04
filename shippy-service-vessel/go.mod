@@ -20,6 +20,6 @@ require (
 	golang.org/x/sys v0.0.0-20191128015809-6d18c012aee9 // indirect
 	golang.org/x/tools v0.0.0-20191203051722-db047d72ee39 // indirect
 	google.golang.org/genproto v0.0.0-20191115221424-83cc0476cb11 // indirect
-	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	upper.io/db.v3 v3.6.3+incompatible
 )
