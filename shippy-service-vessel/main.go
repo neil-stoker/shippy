@@ -1,67 +1,54 @@
 package main
 
 import (
-	"context"
-	"errors"
 	"fmt"
+	"log"
+	"os"
 
 	"github.com/micro/go-micro"
 	pb "github.com/neil-stoker/shippy/shippy-service-vessel/proto/vessel"
 )
 
-// Repository is an interface
-type Repository interface {
-	FindAvailable(*pb.Specification) (*pb.Vessel, error)
-}
+const (
+	defaultHost = "mongodb://datastore:27017"
+)
 
-// VesselRepository is a collection of vessels
-type VesselRepository struct {
-	vessels []*pb.Vessel
-}
-
-// FindAvailable checks a specification against a list of vessels.
-// If capacity and max weight are below a vessels capacity and max weight
-// then return that vessel
-func (repo *VesselRepository) FindAvailable(spec *pb.Specification) (*pb.Vessel, error) {
-	for _, vessel := range repo.vessels {
-		if spec.Capacity <= vessel.Capacity && spec.MaxWeight <= vessel.MaxWeight {
-			return vessel, nil
-		}
-	}
-	return nil, errors.New("No vessel found by that spec")
-}
-
-type service struct {
-	repo Repository
-}
-
-func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res *pb.Response) error {
-	// Find the next available vessel
-	vessel, err := s.repo.FindAvailable(req)
-	if err != nil {
-		return err
+func createDummyData(repo Repository) {
+	defer repo.Close()
+	vessels := []*pb.Vessel{
+		{Id: "vessel001", Name: "Boaty McBoatface", MaxWeight: 200000, Capacity: 500},
 	}
 
-	// Set the vessel as pat of the response message type
-	res.Vessel = vessel
-	return nil
+	for _, v := range vessels {
+		repo.Create(v)
+	}
 }
 
 func main() {
-	vessels := []*pb.Vessel{
-		&pb.Vessel{Id: "vessel001", Name: "Boaty McBoatface", MaxWeight: 200000, Capacity: 500},
+	host := os.Getenv("DB_HOST")
+	if host == "" {
+		host = defaultHost
 	}
 
-	repo := &VesselRepository{vessels}
+	session, err := CreateSession(host)
+	defer session.Close()
+	if err != nil {
+		log.Fatalf("Error connecting to datastore: %v", err)
+	}
+
+	repo := &VesselRepository{session.Copy()}
+
+	createDummyData(repo)
 
 	srv := micro.NewService(
 		micro.Name("shippy.service.vessel"),
+		micro.Version("latest"),
 	)
 
 	srv.Init()
 
 	// Register our implementation with
-	pb.RegisterVesselServiceHandler(srv.Server(), &service{repo})
+	pb.RegisterVesselServiceHandler(srv.Server(), &handler{session})
 
 	if err := srv.Run(); err != nil {
 		fmt.Println(err)

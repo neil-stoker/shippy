@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Fix docker-compose file.
+
+Attempt makefile - needs a script to shut down only the shippy containers. Currently it stops all running containers.
+
+`shippy-service-consignment` refactored the `main.go` file and added access to a mongo datastore.
+
+`shippy-service-vessel` refactored `main.go` file. Added access to a mongo datastore.
+
+## v0.0.6 [2019-12-04]
+
+Fixes from tutorial repo
+
 ## v0.0.5 [2019-12-04]
 
 Much refactoring and jiggering about with repos.
