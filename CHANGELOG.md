@@ -11,6 +11,10 @@ Fix docker-compose file.
 
 Attempt makefile - needs a script to shut down only the shippy containers. Currently it stops all running containers.
 
+`shippy-service-consignment` refactored the `main.go` file and added access to a mongo datastore.
+
+`shippy-service-vessel` refactored `main.go` file.
+
 ## v0.0.6 [2019-12-04]
 
 Fixes from tutorial repo
