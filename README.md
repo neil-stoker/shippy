@@ -1,4 +1,4 @@
-# README
+# Shippy
 
 After a brief experiment with three seperate repos for this project (annoying), discovered that most of the issues were caused with Visual Studio Code.
 
@@ -7,3 +7,5 @@ In order to stop the (frequent) issues with the linter complaining I discovered 
 The project is based upon Ewan Valentine's Microservices in Golang tutorial.
 
 About to start [part 3 `docker-compose and datastores`.](https://ewanvalentine.io/microservices-in-golang-part-3/)
+
+Added the big docker compose file.

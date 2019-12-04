@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "shippy-consignment-cli"
+		},
+		{
+			"path": "shippy-service-consignment"
+		},
+		{
+			"path": "shippy-service-vessel"
+		}
+	],
+	"settings": {}
+}

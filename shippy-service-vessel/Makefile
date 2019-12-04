@@ -1,6 +1,6 @@
 #!/usr/bin/make
 PB = $(wildcard proto/vessel/*.proto)
-GO = $(PB:.proto=.pb.ho)
+GO = $(PB:.proto=.pb.go)
 
 %.pb.go: %.proto
 	protoc -I. --go_out=plugins=micro:. proto/vessel/vessel.proto

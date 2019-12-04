@@ -1,5 +1,5 @@
-# README
+# Shippy Service CLI
 
-This is one of a series of repos following the [microservices in Golang](https://ewanvalentine.io/microservices-in-golang-part-1/) tutorial.
+This file covers specifics for the `shippy-service-cli` part of the project. For the main README, see the file in the parent folder.
 
-Currently working on [part-2](https://ewanvalentine.io/microservices-in-golang-part-2/).
+This part of the project handles adding a new consignment to the system.
