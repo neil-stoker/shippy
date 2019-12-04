@@ -13,7 +13,7 @@ Attempt makefile - needs a script to shut down only the shippy containers. Curre
 
 `shippy-service-consignment` refactored the `main.go` file and added access to a mongo datastore.
 
-`shippy-service-vessel` refactored `main.go` file.
+`shippy-service-vessel` refactored `main.go` file. Added access to a mongo datastore.
 
 ## v0.0.6 [2019-12-04]
 
