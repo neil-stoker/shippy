@@ -8,6 +8,9 @@ WORKDIR /app/shippy-service-vessel
 COPY . .
 
 RUN go mod download
+
+RUN echo "Compiling... This may take some time."
+
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o shippy-service-vessel
 
 FROM alpine:latest

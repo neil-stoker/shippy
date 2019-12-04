@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	micro "github.com/micro/go-micro"
 
@@ -42,12 +43,25 @@ func (repo *Repository) GetAll() []*pb.Consignment {
 // in the generated code itself for the exact method signatures to
 // give you a better idea.
 type service struct {
-	repo repository
+	repo         repository
 	vesselClient vesselProto.VesselServiceClient
 }
 
 // CreateConsignment creates the consignment
 func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, res *pb.Response) error {
+
+	vesselResponse, err := s.vesselClient.FindAvailable(context.Background(), &vesselProto.Specification{
+		MaxWeight: req.Weight,
+		Capacity:  int32(len(req.Containers)),
+	})
+	log.Printf("Found vessel: %s \n", vesselResponse.Vessel.Name)
+	if err != nil {
+		return err
+	}
+
+	// Set the VesselId as the vessel we got back from the vessel service
+	req.VesselId = vesselResponse.Vessel.Id
+
 	consignment, err := s.repo.Create(req)
 	if err != nil {
 		return err
@@ -60,17 +74,7 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	return nil
 }
 
-func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, res *pb.Response) error {
-
-	vessleResponse, err:= s.vesselClient.FindAvailable(context.Background(), &vesselProto.Specification{
-		MaxWeight: req.Weight,
-		Capacity: int32(len(req.Containers)),
-	})
-	log.Printf("Found vessel: %s \n",vesselResponse.Vessel.Name)
-	if err!= nil { return err }
-
-	req.VesselId=vessel.Response.Vessel.Id
-
+func (s *service) GetConsignments(ctx context.Context, req *pb.Consignment, res *pb.Response) error {
 	consignments := s.repo.GetAll()
 	res.Consignments = consignments
 	return nil
@@ -86,7 +90,7 @@ func main() {
 
 	srv.Init()
 
-	vesselClient:=vessel.Proto.NewVesselServiceClient("shippy.service.vessel", srv.Client())
+	vesselClient := vesselProto.NewVesselServiceClient("shippy.service.vessel", srv.Client())
 
 	pb.RegisterShippingServiceHandler(srv.Server(), &service{repo, vesselClient})
 
