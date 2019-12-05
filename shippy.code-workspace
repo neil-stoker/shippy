@@ -13,7 +13,10 @@
 			"path": "shippy-service-vessel"
 		},
 		{
-			"path": "service-user"
+			"path": "/home/ns/Development/apiance/user-service"
+		},
+		{
+			"path": "/home/ns/Development/apiance/user-cli"
 		}
 	],
 	"settings": {}
